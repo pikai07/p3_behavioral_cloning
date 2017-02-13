@@ -17,7 +17,7 @@ My project includes the following files:
 model_lenet.py containing the script to create and train the model
 drive.py for driving the car in autonomous mode
 model.h5 containing a trained convolution neural network
-writeup_report.md or writeup_report.pdf summarizing the results
+writeup_report.md summarizing the results
 
 2. Submssion includes functional code
 
@@ -32,31 +32,24 @@ Model Architecture and Training Strategy
 For this exercise I used a smaller network, the LeNet architecture. 
 LeNet has 2 convolutional layers and 2 fully connected layers. 
 Made few changes as listed below
-1) Use image size of 64x64.
+1) Feed input image of size 64x64 to neural network.
 2) Normalize the image using Keras lambda layer
-3)Changed the size of the convolution kernels to 3x3 in order extract finer features and that made a big difference.
-4)Change the activation layer from Relu to ELU(Exponential Linear Units)
+3) Changed the size of the convolution kernels to 3x3 in order extract finer features and that made a big difference.
+4) Change the activation layer from Relu to ELU(Exponential Linear Units)
 5) Changed the size of the pooling kernel from 2x2 to 4x4 - That is because the input image I am using is the size of 64x64 
 instead of the standard 32x32 that was used for LeNet.
 My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24)
-6) Dropout of 
+
 
 
 2. Attempts to reduce overfitting in the model
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 21).
-
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 86).
 
-4. Appropriate training data
-
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ...
-
-For details about how I created the training data, see the next section.
 
 
 
