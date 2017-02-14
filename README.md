@@ -1,4 +1,4 @@
-Behavrioal Cloning Project
+Behavioral Cloning Project
 
 The goals / steps of this project are the following:
 
@@ -27,28 +27,31 @@ python drive.py model.json
 
 Model Architecture and Training Strategy
 
-1. The Neural network used by NVIDIA and comma ai use hyperparamters which tend to overfit.
+1. The Neural network used by NVIDIA and comma ai are dense architectures which tend to overfit.
 
-For this exercise I used a smaller network, the LeNet architecture. 
-LeNet has 2 convolutional layers and 2 fully connected layers. 
-Made few changes as listed below
-1) Feed input image of size 64x64 to neural network.
-2) Normalize the image using Keras lambda layer
+For this exercise I used LeNet architecture. 
+LeNet has just 2 convolutional layers and 2 fully connected layers and surprisingly it did well without much of image augmentation. 
+Few subtle changes were made as listed below
+1) Fed input image of size 64x64 to neural network.
+2) Normalized the image using Keras lambda layer
 3) Changed the size of the convolution kernels to 3x3 in order extract finer features and that made a big difference.
-4) Change the activation layer from Relu to ELU(Exponential Linear Units)
+4) Changed the activation layer from Relu to ELU(Exponential Linear Units)
 5) Changed the size of the pooling kernel from 2x2 to 4x4 - That is because the input image I am using is the size of 64x64 
 instead of the standard 32x32 that was used for LeNet.
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24)
+6) Using droput made the loss worse and the car would keep falling off the road, so got rid of it.
 
 
+2. Preprocessing steps to reduce overfitting
+a) Normalize the image
+b) Shuffle the data before every epoch
+c) Convert the image to converts it to HSV color space keeping only the S channel
+d) Crop the image to eliminate the horizon and the hood part of the car.
 
-2. Attempts to reduce overfitting in the model
-
-The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+Used the udacity provided dataset to train the model.
 
 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 86).
+The model used an adam optimizer, so the learning rate did not have to be tuned manually.
 
 
 
